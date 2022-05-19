@@ -10,7 +10,7 @@ namespace Encapsulation
     {
         private int age;
         private string? fName; //We validate the string in the public property so that it can't return null.
-        //private string? lName; //We validate the string in the public property so that it can't return null.
+        //private string? lName;
         private string lName = string.Empty; //Making the string default to empty to prevent null warnings.
         private double height;
         private double weight;
