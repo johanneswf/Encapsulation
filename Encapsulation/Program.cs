@@ -17,7 +17,14 @@
             }
             catch (ArgumentException e) { Console.WriteLine(e.Message); }
 
-            var userErrors = new List<UserError>() { new TextInputError(), new TextInputError(), new NumericInputError() };
+            var userErrors = new List<UserError>()
+            {
+                new TextInputError(),
+                new NumericInputError(),
+                new EmptyInputError(),
+                new FloatInputError(),
+                new NonBoolInputError()
+            };
 
             foreach (var error in userErrors) Console.WriteLine(error.UEMessage());
             
@@ -28,8 +35,8 @@
     public class Person
     {
         private int age;
-        private string fName;
-        private string lName;
+        private string? fName; //We validate the string in the public property so that it can't return null.
+        private string? lName; //We validate the string in the public property so that it can't return null.
         private double height;
         private double weight;
 
@@ -45,8 +52,15 @@
 
         public string FName
         {
-            get => fName;
-            set 
+            get 
+            { 
+                //Removes possibility of null return even though it shouldn't be possible for it to be null anyway,
+                //since we check it when set.
+                if (string.IsNullOrEmpty(fName)) throw new ArgumentException("FName is null or empty."); 
+                else return fName;
+            }
+
+            set
             {
                 if (value.Length >= 2 || value.Length <= 10) fName = value;
                 else throw new ArgumentException("FName needs to be between 2 and 10 characters.");
@@ -55,7 +69,10 @@
 
         public string LName
         {
+            // Removes warning instead of checking for null like we did in the FName property.
+#pragma warning disable CS8603 // Possible null reference return.
             get { return lName; }
+#pragma warning restore CS8603 // Possible null reference return.
             set
             {
                 if (value.Length >= 3 || value.Length <= 15) lName = value;
@@ -143,6 +160,30 @@
         public override string UEMessage()
         {
             return "You tried to use a text input in a numeric only field. This fired an error!";
+        }
+    }
+
+    public class EmptyInputError : UserError
+    {
+        public override string UEMessage()
+        {
+            return "You tried to input an empty value in a field that needed a value. This fired an error!";
+        }
+    }
+
+    public class FloatInputError : UserError
+    {
+        public override string UEMessage()
+        {
+            return "You tried to use a floating point value in an integer only field. This fired an error!";
+        }
+    }
+
+    public class NonBoolInputError : UserError
+    {
+        public override string UEMessage()
+        {
+            return "You tried to input a non-boolean value in a boolean only field. This fired an error!";
         }
     }
 }
