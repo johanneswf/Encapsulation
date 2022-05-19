@@ -10,7 +10,8 @@ namespace Encapsulation
     {
         private int age;
         private string? fName; //We validate the string in the public property so that it can't return null.
-        private string? lName; //We validate the string in the public property so that it can't return null.
+        //private string? lName; //We validate the string in the public property so that it can't return null.
+        private string lName = string.Empty; //Making the string default to empty to prevent null warnings.
         private double height;
         private double weight;
 
@@ -44,9 +45,10 @@ namespace Encapsulation
         public string LName
         {
             // Removes warning instead of checking for null like we did in the FName property.
-#pragma warning disable CS8603 // Possible null reference return.
+            // Now commented out because we added a default value to the private string.
+//#pragma warning disable CS8603 // Possible null reference return.
             get { return lName; }
-#pragma warning restore CS8603 // Possible null reference return.
+//#pragma warning restore CS8603 // Possible null reference return.
             set
             {
                 if (value.Length >= 3 || value.Length <= 15) lName = value;
