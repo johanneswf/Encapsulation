@@ -4,12 +4,15 @@
     {
         static void Main(string[] args)
         {
-            //var newPerson = new Person(45, "Lasse", "Kongo");
+            //TryCatch();
+            //UserErrors();
+            //WolfMan();
+            Console.ReadLine();
+        }
 
-            var wolfMan = new Wolfman();
-            wolfMan.Talk();
-
-            try 
+        static void TryCatch()
+        {
+            try
             {
                 var pers = new PersonHandler().CreatePerson(45, "Lasse", "Kongo", 200, 100);
                 Console.WriteLine(
@@ -19,7 +22,10 @@
                     $"Weight: {pers.Weight}kg");
             }
             catch (ArgumentException e) { Console.WriteLine(e.Message); }
+        }
 
+        static void UserErrors()
+        {
             var userErrors = new List<UserError>()
             {
                 new TextInputError(),
@@ -30,8 +36,12 @@
             };
 
             foreach (var error in userErrors) Console.WriteLine(error.UEMessage());
-            
-            Console.ReadLine();
+        }
+
+        static void WolfMan()
+        {
+            var wolfMan = new Wolfman();
+            wolfMan.Talk();
         }
     }
 }
