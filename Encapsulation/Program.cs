@@ -6,6 +6,9 @@
         {
             //var newPerson = new Person(45, "Lasse", "Kongo");
 
+            var wolfMan = new Wolfman();
+            wolfMan.Talk();
+
             try 
             {
                 var pers = new PersonHandler().CreatePerson(45, "Lasse", "Kongo", 200, 100);
