@@ -20,7 +20,12 @@ namespace Encapsulation
         {
             return $"Name: {Name}\n" +
                 $"Weight: {Weight}\n" +
-                $"Age: {Age}\n";
+                $"Age: {Age}";
+        }
+
+        public virtual string WillWork()
+        {
+            return string.Empty;
         }
 
 
@@ -38,8 +43,8 @@ namespace Encapsulation
         {
             //Here we pass the method from the base class to output both base class
             //and subclass methods. The same applies for subsequent subclasses.
-            return $"{base.Stats()}" +
-                $"Ridable: {IsRidable}\n";
+            return $"{base.Stats()}\n" +
+                $"Ridable: {IsRidable}";
         }
     }
 
@@ -52,8 +57,21 @@ namespace Encapsulation
         }
         public override string Stats()
         {
-            return $"{base.Stats()}" +
-                $"Trained: {IsTrained}\n";
+            return $"{base.Stats()}\n" +
+                $"Trained: {IsTrained}";
+        }
+
+        //We can't access this method from the Animal list because the Animal class
+        //lacks an implementation for it. We could create an overridable method in
+        //the Animal class and override it here to make it work.
+        public string WontWork()
+        {
+            return "This won't work.";
+        }
+
+        public override string WillWork()
+        {
+            return "This will work. (Dog method test)";
         }
     }
 
@@ -66,8 +84,8 @@ namespace Encapsulation
         }
         public override string Stats()
         {
-            return $"{base.Stats()}" +
-                $"Number of Spikes: {NumberOfSpikes}\n";
+            return $"{base.Stats()}\n" +
+                $"Number of Spikes: {NumberOfSpikes}";
         }
     }
 
@@ -81,7 +99,7 @@ namespace Encapsulation
         public override string Stats()
         {
             return $"{base.Stats()}\n" +
-                $"Length: {Length}\n";
+                $"Length: {Length}";
         }
     }
 
@@ -95,8 +113,8 @@ namespace Encapsulation
         }
         public override string Stats()
         {
-            return $"{base.Stats()}" +
-                $"Wingspan: {WingSpan}\n";
+            return $"{base.Stats()}\n" +
+                $"Wingspan: {WingSpan}";
         }
     }
 
@@ -109,8 +127,8 @@ namespace Encapsulation
         }
         public override string Stats()
         {
-            return $"{base.Stats()}" +
-                $"Lone wolf: {IsLoneWolf}\n";
+            return $"{base.Stats()}\n" +
+                $"Lone wolf: {IsLoneWolf}";
         }
     }
 
@@ -119,8 +137,8 @@ namespace Encapsulation
         public double BillLength { get; set; }
         public override string Stats()
         {
-            return $"{base.Stats()}" +
-                $"Bill length: {BillLength}\n";
+            return $"{base.Stats()}\n" +
+                $"Bill length: {BillLength}";
         }
     }
 
@@ -136,6 +154,8 @@ namespace Encapsulation
 
     internal class Wolfman : Wolf, IPerson
     {
+
+        //Overriding DoSound would make more sense here but we follow the instructions.
         public void Talk()
         {
             Console.WriteLine("The wolfman says \"rawr\".");

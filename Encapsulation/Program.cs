@@ -8,6 +8,7 @@
             //UserErrors();
             //WolfMan();
             AnimalList();
+            //DogList();
             Console.ReadLine();
         }
 
@@ -60,16 +61,39 @@
             newPelican.WingSpan = 280;
             newPelican.BillLength = 30;
 
+            var newDog = new Dog();
+            newDog.Name = "Ieur";
+            newDog.Weight = 34;
+            newDog.Age = 3;
+            newDog.IsTrained = true;
+
+            var newWolfman = new Wolfman();
+            newWolfman.Name = "Hels";
+            newWolfman.Weight = 92;
+            newWolfman.Age = 43;
+            newWolfman.IsLoneWolf = true;
+
             var animalList = new List<Animal>();
             animalList.Add(newHorse);
             animalList.Add(newPelican);
+            animalList.Add(newDog);
+            animalList.Add(newWolfman);
 
+            Console.WriteLine("\n\tANIMALS\n");
             foreach (var animal in animalList)
             {
                 //We make a loop that iterates through animalList
-                //Console.WriteLine(nameof(animal)); //Doesn't specify the subclass.
+                Console.WriteLine(animal.GetType());
+
                 animal.DoSound();
+
+                if (animal.GetType() == typeof(Dog))
+                {
+                    Console.WriteLine(animal.WillWork());
+                }
+
                 Console.WriteLine(animal.Stats()); //See comments in Animal class file.
+
                 //UGLY solution while I figure out how to check if a class
                 //implements the specified interface.
                 try
@@ -78,8 +102,19 @@
                     check.Talk();
                 }
                 catch { }
-                
+
+                Console.WriteLine();
             }
+
+            Console.WriteLine("\n\tDOG STATS\n");
+            foreach (var animal in animalList)
+            {
+                if (animal.GetType() == typeof(Dog))
+                {
+                    Console.WriteLine(animal.Stats());
+                }
+            }
+
         }
 
         static void DogList()
@@ -102,7 +137,7 @@
             //dogList.Add(new Horse());
             //Can't add Horse to DogList as Horse is a different subclass.
             //Only Dog and its subclasses (none) can be put in DogList.
-            //Horse would have to inherit from Dog to make it work.
+            //We need an Animal list.
 
         }
 
