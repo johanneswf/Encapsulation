@@ -15,6 +15,14 @@ namespace Encapsulation
 
         public abstract void DoSound();
 
+        //We will pass this overridable method to the methods of its subclasses.
+        public virtual string Stats()
+        {
+            return $"Name: {Name}\n" +
+                $"Weight: {Weight}\n" +
+                $"Age: {Age}\n";
+        }
+
 
     }
 
@@ -25,6 +33,14 @@ namespace Encapsulation
         {
             Console.WriteLine("The horse neighs.");
         }
+
+        public override string Stats()
+        {
+            //Here we pass the method from the base class to output both base class
+            //and subclass methods. The same applies for subsequent subclasses.
+            return $"{base.Stats()}" +
+                $"Ridable: {IsRidable}\n";
+        }
     }
 
     internal class Dog : Animal
@@ -33,6 +49,11 @@ namespace Encapsulation
         public override void DoSound()
         {
             Console.WriteLine("The dog barks.");
+        }
+        public override string Stats()
+        {
+            return $"{base.Stats()}" +
+                $"Trained: {IsTrained}\n";
         }
     }
 
@@ -43,6 +64,11 @@ namespace Encapsulation
         {
             Console.WriteLine("The hedgehog sqeaks.");
         }
+        public override string Stats()
+        {
+            return $"{base.Stats()}" +
+                $"Number of Spikes: {NumberOfSpikes}\n";
+        }
     }
 
     internal class Worm : Animal
@@ -51,6 +77,11 @@ namespace Encapsulation
         public override void DoSound()
         {
             Console.WriteLine("The worm grunts.");
+        }
+        public override string Stats()
+        {
+            return $"{base.Stats()}\n" +
+                $"Length: {Length}\n";
         }
     }
 
@@ -62,6 +93,11 @@ namespace Encapsulation
         {
             Console.WriteLine("The bird chirps.");
         }
+        public override string Stats()
+        {
+            return $"{base.Stats()}" +
+                $"Wingspan: {WingSpan}\n";
+        }
     }
 
     internal class Wolf : Animal
@@ -71,11 +107,21 @@ namespace Encapsulation
         {
             Console.WriteLine("The wolf howls.");
         }
+        public override string Stats()
+        {
+            return $"{base.Stats()}" +
+                $"Lone wolf: {IsLoneWolf}\n";
+        }
     }
 
     internal class Pelican : Bird
     {
         public double BillLength { get; set; }
+        public override string Stats()
+        {
+            return $"{base.Stats()}" +
+                $"Bill length: {BillLength}\n";
+        }
     }
 
     internal class Flamingo : Bird
