@@ -26,9 +26,10 @@ namespace Encapsulation
         public virtual string Stats()
         {
             return 
-                $"Name: \t{Name}\n" +
-                $"Weight: \t{Weight}\n" +
-                $"Age: \t{Age}";
+                $"Type: {GetType().Name}\n" +
+                $"Name: {Name}\n" +
+                $"Weight: {Weight}\n" +
+                $"Age: {Age}";
         }
 
         public virtual string WillWork() => string.Empty;
@@ -56,7 +57,7 @@ namespace Encapsulation
             //and subclass methods. The same applies for subsequent subclasses.
             return 
                 $"{base.Stats()}\n" +
-                $"Ridable: \t{IsRidable}";
+                $"Ridable: {IsRidable}";
         }
     }
 
@@ -77,7 +78,7 @@ namespace Encapsulation
         {
             return 
                 $"{base.Stats()}\n" +
-                $"Trained: \t{IsTrained}";
+                $"Trained: {IsTrained}";
         }
 
         //We can't access this method from the Animal list because the Animal class
@@ -105,7 +106,7 @@ namespace Encapsulation
         {
             return
                 $"{base.Stats()}\n" +
-                $"Spikes: \t{NumberOfSpikes}";
+                $"Spikes: {NumberOfSpikes}";
         }
     }
 
@@ -125,7 +126,7 @@ namespace Encapsulation
         {
             return 
                 $"{base.Stats()}\n" +
-                $"Length: \t{Length}";
+                $"Length: {Length}";
         }
     }
 
@@ -146,7 +147,7 @@ namespace Encapsulation
         {
             return 
                 $"{base.Stats()}\n" +
-                $"Wingspan: \t{WingSpan}";
+                $"Wingspan: {WingSpan}";
         }
     }
 
@@ -166,7 +167,7 @@ namespace Encapsulation
         {
             return 
                 $"{base.Stats()}\n" +
-                $"Lone wolf: \t{IsLoneWolf}";
+                $"Lone wolf: {IsLoneWolf}";
         }
     }
 
@@ -182,7 +183,7 @@ namespace Encapsulation
         {
             return 
                 $"{base.Stats()}\n" +
-                $"Bill length: \t{BillLength}";
+                $"Bill length: {BillLength}";
         }
     }
 

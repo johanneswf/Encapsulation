@@ -60,7 +60,7 @@
             foreach (var animal in animalList)
             {
                 //We make a loop that iterates through animalList
-                Console.WriteLine(animal.GetType().Name);
+                //Console.WriteLine(animal.GetType().Name); Moved to Animal class.
 
                 Console.WriteLine(animal.Stats()); //See comments in Animal class file.
 
@@ -68,8 +68,7 @@
 
                 if (animal is IPerson)
                 {
-                    var ipanimal = (IPerson)animal;
-                    ipanimal.Talk();
+                    ((IPerson)animal).Talk();
                 }
 
                 if (animal is Dog)
