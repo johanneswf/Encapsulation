@@ -18,15 +18,13 @@ namespace Encapsulation
         //We will pass this overridable method to the methods of its subclasses.
         public virtual string Stats()
         {
-            return $"Name: {Name}\n" +
-                $"Weight: {Weight}\n" +
-                $"Age: {Age}";
+            return 
+                $"Name: \t{Name}\n" +
+                $"Weight: \t{Weight}\n" +
+                $"Age: \t{Age}";
         }
 
-        public virtual string WillWork()
-        {
-            return string.Empty;
-        }
+        public virtual string WillWork() => string.Empty;
 
 
     }
@@ -43,8 +41,9 @@ namespace Encapsulation
         {
             //Here we pass the method from the base class to output both base class
             //and subclass methods. The same applies for subsequent subclasses.
-            return $"{base.Stats()}\n" +
-                $"Ridable: {IsRidable}";
+            return 
+                $"{base.Stats()}\n" +
+                $"Ridable: \t{IsRidable}";
         }
     }
 
@@ -57,22 +56,17 @@ namespace Encapsulation
         }
         public override string Stats()
         {
-            return $"{base.Stats()}\n" +
-                $"Trained: {IsTrained}";
+            return 
+                $"{base.Stats()}\n" +
+                $"Trained: \t{IsTrained}";
         }
 
         //We can't access this method from the Animal list because the Animal class
         //lacks an implementation for it. We could create an overridable method in
         //the Animal class and override it here to make it work.
-        public string WontWork()
-        {
-            return "This won't work.";
-        }
+        public string WontWork() => "This won't work.";
 
-        public override string WillWork()
-        {
-            return "This will work. (Dog method test)";
-        }
+        public override string WillWork() => "This will work. (Dog method test)";
     }
 
     internal class Hedgehog : Animal
@@ -84,8 +78,9 @@ namespace Encapsulation
         }
         public override string Stats()
         {
-            return $"{base.Stats()}\n" +
-                $"Number of Spikes: {NumberOfSpikes}";
+            return
+                $"{base.Stats()}\n" +
+                $"Spikes: \t{NumberOfSpikes}";
         }
     }
 
@@ -98,8 +93,9 @@ namespace Encapsulation
         }
         public override string Stats()
         {
-            return $"{base.Stats()}\n" +
-                $"Length: {Length}";
+            return 
+                $"{base.Stats()}\n" +
+                $"Length: \t{Length}";
         }
     }
 
@@ -113,8 +109,9 @@ namespace Encapsulation
         }
         public override string Stats()
         {
-            return $"{base.Stats()}\n" +
-                $"Wingspan: {WingSpan}";
+            return 
+                $"{base.Stats()}\n" +
+                $"Wingspan: \t{WingSpan}";
         }
     }
 
@@ -127,8 +124,9 @@ namespace Encapsulation
         }
         public override string Stats()
         {
-            return $"{base.Stats()}\n" +
-                $"Lone wolf: {IsLoneWolf}";
+            return 
+                $"{base.Stats()}\n" +
+                $"Lone wolf: \t{IsLoneWolf}";
         }
     }
 
@@ -137,8 +135,9 @@ namespace Encapsulation
         public double BillLength { get; set; }
         public override string Stats()
         {
-            return $"{base.Stats()}\n" +
-                $"Bill length: {BillLength}";
+            return 
+                $"{base.Stats()}\n" +
+                $"Bill length: \t{BillLength}";
         }
     }
 
