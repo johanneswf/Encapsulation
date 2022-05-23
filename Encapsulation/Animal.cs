@@ -13,6 +13,13 @@ namespace Encapsulation
         public double Weight { get; set; }
         public int Age { get; set; }
 
+        public Animal(string name, double weight, int age)
+        {
+            Name = name;
+            Weight = weight;
+            Age = age;
+        }
+
         public abstract void DoSound();
 
         //We will pass this overridable method to the methods of its subclasses.
@@ -32,6 +39,12 @@ namespace Encapsulation
     internal class Horse : Animal
     {
         public bool IsRidable { get; set; }
+        
+        public Horse(string name, double weight, int age, bool isRidable) : base(name, weight, age)
+        {
+            IsRidable = isRidable;
+        }
+
         public override void DoSound()
         {
             Console.WriteLine("The horse neighs.");
@@ -50,6 +63,12 @@ namespace Encapsulation
     internal class Dog : Animal
     {
         public bool IsTrained { get; set; }
+
+        public Dog(string name, double weight, int age, bool isTrained) : base(name, weight, age)
+        {
+            IsTrained = isTrained;
+        }
+
         public override void DoSound()
         {
             Console.WriteLine("The dog barks.");
@@ -72,6 +91,12 @@ namespace Encapsulation
     internal class Hedgehog : Animal
     {
         public int NumberOfSpikes { get; set; }
+
+        public Hedgehog(string name, double weight, int age, int numberOfSpikes) : base(name, weight, age)
+        {
+            NumberOfSpikes = numberOfSpikes;
+        }
+
         public override void DoSound()
         {
             Console.WriteLine("The hedgehog sqeaks.");
@@ -86,6 +111,11 @@ namespace Encapsulation
 
     internal class Worm : Animal
     {
+        public Worm(string name, double weight, int age, double length) : base(name, weight, age)
+        {
+            Length = length;
+        }
+
         public double Length { get; set; }
         public override void DoSound()
         {
@@ -101,6 +131,11 @@ namespace Encapsulation
 
     internal class Bird : Animal
     {
+        public Bird(string name, double weight, int age, double wingSpan) : base(name, weight, age)
+        {
+                WingSpan = wingSpan;
+        }
+
         // If all birds need a property we put it here.
         public double WingSpan { get; set; }
         public override void DoSound()
@@ -117,6 +152,11 @@ namespace Encapsulation
 
     internal class Wolf : Animal
     {
+        public Wolf(string name, double weight, int age, bool isLoneWolf) : base(name, weight, age)
+        {
+            IsLoneWolf = isLoneWolf;
+        }
+
         public bool IsLoneWolf { get; set; }
         public override void DoSound()
         {
@@ -132,6 +172,11 @@ namespace Encapsulation
 
     internal class Pelican : Bird
     {
+        public Pelican(string name, double weight, int age, double wingSpan, double billLength) : base(name, weight, age, wingSpan)
+        {
+            BillLength = billLength;
+        }
+
         public double BillLength { get; set; }
         public override string Stats()
         {
@@ -143,16 +188,29 @@ namespace Encapsulation
 
     internal class Flamingo : Bird
     {
+        public Flamingo(string name, double weight, int age, double wingSpan, bool isStandingOnOneLeg) : base(name, weight, age, wingSpan)
+        {
+            IsStandingOnOneLeg = isStandingOnOneLeg;
+        }
+
         public bool IsStandingOnOneLeg { get; set; }
     }
 
     internal class Swan : Bird
     {
+        public Swan(string name, double weight, int age, double wingSpan, bool isSinging) : base(name, weight, age, wingSpan)
+        {
+            IsSinging = isSinging;
+        }
+
         public bool IsSinging { get; set; }
     }
 
     internal class Wolfman : Wolf, IPerson
     {
+        public Wolfman(string name, double weight, int age, bool isLoneWolf) : base(name, weight, age, isLoneWolf)
+        {
+        }
 
         //Overriding DoSound would make more sense here but we follow the instructions.
         public void Talk()

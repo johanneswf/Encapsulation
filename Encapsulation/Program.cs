@@ -42,42 +42,19 @@
 
         static void WolfMan()
         {
-            var wolfMan = new Wolfman();
+            var wolfMan = new Wolfman("Hels", 92, 43, true);
             wolfMan.Talk();
         }
 
         static void AnimalList()
         {
-            var newHorse = new Horse();
-            newHorse.Name = "Leif";
-            newHorse.Weight = 600;
-            newHorse.Age = 15;
-            newHorse.IsRidable = true;
-
-            var newPelican = new Pelican();
-            newPelican.Name = "Pelle";
-            newPelican.Weight = 15;
-            newPelican.Age = 8;
-            newPelican.WingSpan = 280;
-            newPelican.BillLength = 30;
-
-            var newDog = new Dog();
-            newDog.Name = "Ieur";
-            newDog.Weight = 34;
-            newDog.Age = 3;
-            newDog.IsTrained = true;
-
-            var newWolfman = new Wolfman();
-            newWolfman.Name = "Hels";
-            newWolfman.Weight = 92;
-            newWolfman.Age = 43;
-            newWolfman.IsLoneWolf = true;
-
-            var animalList = new List<Animal>();
-            animalList.Add(newHorse);
-            animalList.Add(newPelican);
-            animalList.Add(newDog);
-            animalList.Add(newWolfman);
+            var animalList = new List<Animal>()
+            {
+                new Horse("Leif", 500, 15, true),
+                new Pelican("Pelle", 15, 8, 200, 30),
+                new Dog("Ieur", 34, 3, true),
+                new Wolfman("Hels", 92, 43, true)
+            };
 
             Console.WriteLine("\n\tANIMALS\n");
             foreach (var animal in animalList)
@@ -106,7 +83,7 @@
             Console.WriteLine("\n\tDOG STATS\n");
             foreach (var animal in animalList)
             {
-                if (animal.GetType() == typeof(Dog))
+                if (animal is Dog)
                 {
                     Console.WriteLine(animal.Stats());
                 }
@@ -116,22 +93,14 @@
 
         static void DogList()
         {
-            var fido = new Dog();
-            fido.Name = "Fido";
-            fido.Weight = 25;
-            fido.Age = 5;
-            fido.IsTrained = true;
+            var dogList = new List<Dog>()
+            {
+                new Dog("Fido", 42, 4, true),
+                new Dog("Byrackan", 66, 15, false)
+            };
 
-            var byrackan = new Dog();
-            fido.Name = "Byrackan";
-            fido.Weight = 66;
-            fido.Age = 15;
-            fido.IsTrained = false;
+            //dogList.Add(new Horse("Nope", 555, 11, false));
 
-            var dogList = new List<Dog>();
-            dogList.Add(fido);
-            dogList.Add(byrackan);
-            //dogList.Add(new Horse());
             //Can't add Horse to DogList as Horse is a different subclass.
             //Only Dog and its subclasses (none) can be put in DogList.
             //We need an Animal list.
