@@ -89,13 +89,13 @@
 
                 animal.DoSound();
 
-                if (typeof(IPerson).IsAssignableFrom(animal.GetType()))
+                if (animal is IPerson)
                 {
                     var ipanimal = (IPerson)animal;
                     ipanimal.Talk();
                 }
 
-                if (animal.GetType() == typeof(Dog))
+                if (animal is Dog)
                 {
                     Console.WriteLine(animal.WillWork());
                 }
