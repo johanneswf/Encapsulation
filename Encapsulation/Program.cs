@@ -83,25 +83,22 @@
             foreach (var animal in animalList)
             {
                 //We make a loop that iterates through animalList
-                Console.WriteLine(animal.GetType());
+                Console.WriteLine(animal.GetType().Name);
+
+                Console.WriteLine(animal.Stats()); //See comments in Animal class file.
 
                 animal.DoSound();
+
+                if (typeof(IPerson).IsAssignableFrom(animal.GetType()))
+                {
+                    var ipanimal = (IPerson)animal;
+                    ipanimal.Talk();
+                }
 
                 if (animal.GetType() == typeof(Dog))
                 {
                     Console.WriteLine(animal.WillWork());
                 }
-
-                Console.WriteLine(animal.Stats()); //See comments in Animal class file.
-
-                //UGLY solution while I figure out how to check if a class
-                //implements the specified interface.
-                try
-                {
-                    IPerson check = (IPerson)animal;
-                    check.Talk();
-                }
-                catch { }
 
                 Console.WriteLine();
             }
